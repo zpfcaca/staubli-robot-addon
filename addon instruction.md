@@ -2,11 +2,11 @@
 
 ##Expasion
 * num $getState():返回RSI板上七段显示管显示的系统状态。
-* bool $delete(string sPath):删除指定文件或文件夹。
+* bool $delete(string sPath):删除指定文件或文件夹。若sPath已经不存在，返回true。
 * bool $copy(string sFrom,string sTo):把文件或文件夹从sFrom复制到sTo。
 * bool $rename(string sFrom,string sTo):把文件或文件夹从sFrom移动到sTo。
 * bool $fileExits(string sPath):判断指定的文件是否存在，sPath是文件路径。
-* bool $fileOpen(string sPath,string sMode):以读或写的方式打开一个文件。最多同时打开10个文件。
+* bool $fileOpen(string sPath,string sMode):以读或写的方式打开一个文件。最多同时打开10个文件。sMode:“r”（读取），“w”（写），“a”（追加）。
 * num $fileGet(num nFileHandler,string& sLine[],num nNbLines):读取nNbLines行，储存在sLine中，返回读取的`有效`行数
 * num $fileGet(num nFileHandler,num& nBytes[],num nNbytes):读取nNbytes个字符，储存在nBytes中，返回读取的`有效`字符数。
 * num $fileSet(num nFileHandler, string sLines[], num nNbLines)：从sLines中取nNbLines个字符串写入文件中，返回实际写入的数目。
@@ -15,7 +15,7 @@
 * num $getPowerCOunt():返回机器人总上电时间，单位小时。
 * num $getFreeSpace(x_sPart):获取分区剩余空间，x_sPart:“/sys”,“/usr”,“/log”。
 * num $circleFind(point& pPointsIn[], frame& fFrameOut, num& nRadiusOut):
-获取通过输入点（pPointsIn[]）的一个圆。
+获取通过输入点（pPointsIn[]）的一个圆。需要ValTrack 许可证激活。
 pPointsIn:输入点，至少3个点，最多10个点；
 fFrameOut:圆所在的坐标系，其原点即圆的中心点；
 nRadiusOut:圆的半径；
