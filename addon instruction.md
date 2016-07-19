@@ -1,6 +1,6 @@
 #Staubli robot addon 介绍
 
-##Expasion
+##Expansion
 * num $getState():返回RSI板上七段显示管显示的系统状态。
 * bool $delete(string sPath):删除指定文件或文件夹。若sPath已经不存在，返回true。
 * bool $copy(string sFrom,string sTo):把文件或文件夹从sFrom复制到sTo。
