@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="start">
+    <Code><![CDATA[begin
+  //nMoveType:
+  //0:Frame
+  //1:tool
+  //2:joint
+  taskCreateSync "vel",0.004,bSync,setVel(nMoveType,world,tTool,mNominal,nVelCmd)
+end]]></Code>
+  </Program>
+</Programs>

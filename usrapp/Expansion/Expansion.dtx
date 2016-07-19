@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Data/2">
+  <Datas>
+    <Data name="mNomSpeed" access="private" xsi:type="array" type="mdesc" size="1" />
+    <Data name="nState" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="sFileDelete" access="private" xsi:type="array" type="string" size="1">
+      <Value key="0" value="Disk://data/deletedfile" />
+    </Data>
+    <Data name="sFrom" access="private" xsi:type="array" type="string" size="1">
+      <Value key="0" value="Disk://data/copy/1.txt" />
+    </Data>
+    <Data name="sTo" access="private" xsi:type="array" type="string" size="1">
+      <Value key="0" value="Disk://data/copy/copy.txt" />
+    </Data>
+    <Data name="sFromRename" access="private" xsi:type="array" type="string" size="1">
+      <Value key="0" value="Disk://data/rename/1.txt" />
+    </Data>
+    <Data name="sToRename" access="private" xsi:type="array" type="string" size="1">
+      <Value key="0" value="Disk://data/rename/re.txt" />
+    </Data>
+    <Data name="sFileExist" access="private" xsi:type="array" type="string" size="1">
+      <Value key="0" value="Disk://data/exist/exist.txt" />
+    </Data>
+    <Data name="sFileRead" access="private" xsi:type="array" type="string" size="1">
+      <Value key="0" value="Disk://data/fileoperation/read.txt" />
+    </Data>
+    <Data name="nFileHandler" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="nLine" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="sLine" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sFileWrite" access="private" xsi:type="array" type="string" size="1">
+      <Value key="0" value="Disk://data/fileoperation/write.txt" />
+    </Data>
+    <Data name="nPwrCnt" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="nCircleErr" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="pPointIn" access="private" xsi:type="array" type="pointRx" size="4">
+      <Value key="0" fatherId="world[0]" />
+      <Value key="1" fatherId="world[0]" />
+      <Value key="2" fatherId="world[0]" />
+      <Value key="3" fatherId="world[0]" />
+    </Data>
+    <Data name="nRadius" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="fCircleFrame" access="private" xsi:type="array" type="frame" size="1">
+      <Value key="0" fatherId="world[0]" />
+    </Data>
+    <Data name="jArmLimit" access="private" xsi:type="array" type="jointRx" size="2">
+      <Value key="0" j1="-100" j2="-50" j3="-50" j4="-100" j5="-60" j6="-100" />
+      <Value key="1" j1="150" j2="100" j3="100" j4="100" j5="100" j6="100" />
+    </Data>
+    <Data name="jCellLimit" access="private" xsi:type="array" type="jointRx" size="2">
+      <Value key="0" j1="-100" j2="-100" j3="-100" j4="-100" j5="-85" j6="-100" />
+      <Value key="1" j1="120" j2="120" j3="120" j4="120" j5="90" j6="300" />
+    </Data>
+  </Datas>
+</Database>

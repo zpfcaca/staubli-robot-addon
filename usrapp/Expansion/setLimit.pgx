@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setLimit">
+    <Locals>
+      <Local name="l_bRes" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //set arm/cell limit:
+  //
+  l_bRes=$setArmLimits(jArmLimit[0],jArmLimit[1])
+  if l_bRes
+    gotoxy(1,11)
+    put("setArmLimit:OK")
+  else
+    gotoxy(1,11)
+    put("setArmLimit:fail")
+  endIf
+  //
+  l_bRes=$setArmLimits(jCellLimit[0],jCellLimit[1])
+  if l_bRes
+    gotoxy(20,11)
+    put("setCellLimit:OK")
+  else
+    gotoxy(20,11)
+    put("setCellLimit:fail")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

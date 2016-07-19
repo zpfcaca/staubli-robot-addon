@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="start">
+    <Locals>
+      <Local name="l_ni" type="num" xsi:type="array" size="1" />
+      <Local name="l_sid" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //清空储存器
+  $recClean("c")
+  //6轴，从1到6
+  for l_ni=1 to 6
+    l_sid="["+toString("",l_ni)+"]"
+    //这里只是举例说明，不代表全部
+    $recAdd("c","jntFbkPosErr"+l_sid)
+    $recAdd("c","jntFbkFrc"+l_sid)
+    $recAdd("c","jntFbkPos"+l_sid)
+    $recAdd("c","jntCmdVel"+l_sid)
+    $recAdd("c","jntFbkVel"+l_sid)
+  endFor
+  //
+  movej(jJoint[0],flange,mSpeed)
+  waitEndMove()
+  //记录开始
+  $recStart("c",30,250)
+  delay(2)
+  movej(jJoint[1],flange,mSpeed)
+  movej(jJoint[2],flange,mSpeed)
+  waitEndMove()
+  delay(1)
+  $recStop("c")
+  //保存成文本文件。若保存成二进制文件："Disk://record"
+  $recStore("ctt","Disk://record.txt")
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="fitCircle">
+    <Code><![CDATA[begin
+  //fit a circle through pPointIn array.
+  nCircleErr=$circleFind(pPointIn,fCircleFrame,nRadius)
+  if nCircleErr<0
+    gotoxy(1,10)
+    put("圆:拟合失败！")
+    return
+  endIf
+  gotoxy(1,10)
+  put("圆半径："+toString(".2",nRadius)+"  "+"误差："+toString(".2",nCircleErr))
+end]]></Code>
+  </Program>
+</Programs>

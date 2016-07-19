@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="fileWrite">
+    <Locals>
+      <Local name="l_bRes" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nCount" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //file operation:open ,read, write,close
+  //
+  l_bRes=$fileExists(sFileWrite)
+  if !l_bRes
+    popUpMsg("文件不存在："+sFileWrite)
+    return
+  endIf
+  //防止某个文件没有关闭
+  $fileClose(0)
+  $fileClose(1)
+  $fileClose(2)
+  $fileClose(3)
+  $fileClose(4)
+  $fileClose(5)
+  $fileClose(6)
+  $fileClose(7)
+  $fileClose(8)
+  $fileClose(9)
+  //以读取（w）的方式打开文件
+  nFileHandler=$fileOpen(sFileWrite,"w")
+  if nFileHandler<0 or nFileHandler>9
+    popUpMsg("打开文件失败："+sFileWrite)
+    return
+  endIf
+  //写入文件，这里以计数方式结束写入，当然可以使用用户自定义结束。
+  //写入文件结束是必须的，否则会造成系统瘫痪。
+  l_nCount=0
+  sLine="a"
+  do 
+    //每次写入一行,当然可以写入多行，sLine大小和写入行数最好一致。
+    nLine=$fileSet(nFileHandler,sLine,1)
+    l_nCount=l_nCount+1
+    //
+    delay(0)
+  until l_nCount>500
+
+
+  //达到文件末尾或其他跳出文件读取时，必须关闭文件
+  $fileClose(nFileHandler)
+  //
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="deleteFile">
+    <Locals>
+      <Local name="l_bRes" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //delete the file or folder
+  l_bRes=$delete(sFileDelete)
+  if l_bRes
+    gotoxy(1,2)
+    put("删除:"+sFileDelete)
+  else
+    gotoxy(1,2)
+    put("删除:失败"+sFileDelete)
+  endIf
+  
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s7.9.1" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="equival_Trsf.pgx" />
+    <Program file="externalFrc.pgx" />
+    <Program file="getCycleTime.pgx" />
+    <Program file="getPosFbk.pgx" />
+    <Program file="motionState.pgx" />
+    <Program file="readMe.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="MotionAddon.dtx" />
+  </Database>
+  <Libraries />
+</Project>

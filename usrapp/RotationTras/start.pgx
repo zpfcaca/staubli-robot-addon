@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="start">
+    <Code><![CDATA[begin
+  //
+  cls()
+  //从一个trsf中获取变换转角
+  nAngle=$rotAngle(tTransformation)
+  //
+  gotoxy(0,0)
+  put("变换：")
+  gotoxy(0,1)
+  put("x:"+toString("7.3",tTransformation.x))
+  gotoxy(0,2)
+  put("y:"+toString("7.3",tTransformation.y))
+  gotoxy(0,3)
+  put("z:"+toString("7.3",tTransformation.z))
+  gotoxy(15,1)
+  put("rx:"+toString("7.3",tTransformation.rx))
+  gotoxy(15,2)
+  put("ry:"+toString("7.3",tTransformation.ry))
+  gotoxy(15,3)
+  put("rz:"+toString("7.3",tTransformation.rz))
+  gotoxy(0,4)
+  put("通用转角："+toString("5.2",nAngle))
+  
+  //返回通用轴和转角
+  nAngle=$getRot(tTransformation,nXaxis,nYaxis,nZaxis)
+  gotoxy(0,6)
+  put("通用转轴："+toString("5.3",nXaxis)+","+toString("5.3",nYaxis)+","+toString("5.3",nZaxis))
+  gotoxy(0,7)
+  put("通用转角："+toString("5.2",nAngle))
+  
+  //把通用轴和转角转换成标准变换矩阵
+  if nSetXaxis*nSetXaxis+nSetYaxis*nSetYaxis+nSetZaxis*nSetZaxis>0
+    trNew=$setRot(nSetAngle,nSetXaxis,nSetYaxis,nSetZaxis)
+    gotoxy(0,8)
+    put("通用转轴："+toString("5.3",nSetXaxis)+","+toString("5.3",nSetYaxis)+","+toString("5.3",nSetZaxis))
+    gotoxy(0,9)
+    put("通用转角："+toString("5.2",nSetAngle))
+    //
+    gotoxy(0,10)
+    put("得到的变换：")
+    gotoxy(0,11)
+    put("x:"+toString("7.3",trNew.x))
+    gotoxy(0,12)
+    put("y:"+toString("7.3",trNew.y))
+    gotoxy(0,13)
+    put("z:"+toString("7.3",trNew.z))
+    gotoxy(15,11)
+    put("rx:"+toString("7.3",trNew.rx))
+    gotoxy(15,12)
+    put("ry:"+toString("7.3",trNew.ry))
+    gotoxy(15,13)
+    put("rz:"+toString("7.3",trNew.rz))
+  else
+    gotoxy(0,8)
+    put("通用转轴："+"错误")
+    gotoxy(0,9)
+    put("通用转角："+toString("5.2",nSetAngle))
+    //
+    gotoxy(0,10)
+    put("得到的变换：")
+    gotoxy(0,11)
+    put("x:"+"-")
+    gotoxy(0,12)
+    put("y:"+"-")
+    gotoxy(0,13)
+    put("z:"+"-")
+    gotoxy(15,11)
+    put("rx:"+"-")
+    gotoxy(15,12)
+    put("ry:"+"-")
+    gotoxy(15,13)
+    put("rz:"+"-")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

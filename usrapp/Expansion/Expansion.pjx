@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s7.9.1" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="copyFile.pgx" />
+    <Program file="deleteFile.pgx" />
+    <Program file="fileExit.pgx" />
+    <Program file="fileRead.pgx" />
+    <Program file="fileWrite.pgx" />
+    <Program file="fitCircle.pgx" />
+    <Program file="getMemoryFree.pgx" />
+    <Program file="getPwrCnt.pgx" />
+    <Program file="getState.pgx" />
+    <Program file="renameFile.pgx" />
+    <Program file="setLimit.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="Expansion.dtx" />
+  </Database>
+  <Libraries />
+</Project>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="motionState">
+    <Locals>
+      <Local name="l_ni" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMask" type="num" xsi:type="array" size="1" />
+      <Local name="l_sTemp" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //
+  cls()
+  //
+  nMotState=$motionState()
+  //
+  //检测返回数值的二进制数哪些位上是“1”
+  //根据函数说明：0-14和15-29取值相同，30,31位还计算
+  for l_ni=0 to 14
+    l_nMask=power(2,l_ni)
+    if bAnd(nMotState,l_nMask)==l_nMask
+      nMotStBit[l_ni]=1 
+    endIf
+  endFor
+  //
+  for l_ni=30 to 31
+    l_nMask=power(2,l_ni)
+    if bAnd(nMotState,l_nMask)==l_nMask
+      nMotStBit[l_ni-15]=1 
+    endIf
+  endFor
+  //
+  //通过对nMotStBit的判断并查看说明可以等到信息。
+  gotoxy(1,0)
+  put("当前运动状态:")
+  for l_ni=0 to 16
+    l_sTemp=l_sTemp+toString("",nMotStBit[l_ni])
+  endFor
+  gotoxy(1,1)
+  put(l_sTemp)
+  
+end]]></Code>
+  </Program>
+</Programs>

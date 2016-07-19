@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="externalFrc">
+    <Locals>
+      <Local name="l_jPos" type="joint" xsi:type="array" size="1" />
+      <Local name="l_nCurJntTorq" type="num" xsi:type="array" size="6" />
+      <Local name="l_nJntVel" type="num" xsi:type="array" size="6" />
+      <Local name="l_nJntVelPrev" type="num" xsi:type="array" size="6" />
+      <Local name="l_nJntAccel" type="num" xsi:type="array" size="6" />
+      <Local name="l_nCycleTime" type="num" xsi:type="array" size="1" />
+      <Local name="l_nTheoJntTorq" type="num" xsi:type="array" size="6" />
+      <Local name="l_nJntExtTorq" type="num" xsi:type="array" size="6" />
+      <Local name="l_nWorldExtFrc" type="num" xsi:type="array" size="6" />
+      <Local name="l_trWorldOvrFrc" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_pHere" type="point" xsi:type="array" size="1" />
+      <Local name="l_ni" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  cls()
+  //获取系统周期
+  l_nCycleTime=$getCycleTime()
+  
+  //每一个系统周期计算一次外部力
+  while true
+    //读取反馈位置
+    l_jPos=$getJntFbk()
+    //读取关节力矩
+    getJointForce(l_nCurJntTorq)
+    //读取关节速度
+    $getJntSpeedFbk(l_nJntVel)
+    //计算关节加速度
+    for l_ni=0 to 5
+      l_nJntAccel[l_ni]=(l_nJntVel[l_ni]-l_nJntVelPrev[l_ni])/l_nCycleTime
+      l_nJntVelPrev[l_ni]=l_nJntVel[l_ni]
+    endFor
+    //根据重力和马达特性计算理论关节力矩
+    $computeJntFrc(l_jPos,l_nJntVel,l_nJntAccel,l_nTheoJntTorq)
+    
+    //计算关节力矩实际值与理论值的偏差
+    for l_ni=0 to 5
+      l_nJntExtTorq[l_ni]=l_nCurJntTorq[l_ni]-l_nTheoJntTorq[l_ni]
+    endFor
+    //计算世界坐标下TCP处的力或力矩
+    $externalForce(l_jPos,tTool,l_nJntExtTorq,l_nWorldExtFrc)
+    
+    //这里不考虑力矩,world下的外力表示：x,y,z分量
+    trWorldExtFrc.x=l_nWorldExtFrc[0]
+    trWorldExtFrc.y=l_nWorldExtFrc[1]
+    trWorldExtFrc.z=l_nWorldExtFrc[2]
+    //
+    //
+    //把力换算到TCP坐标系下
+    //获取TCP位置
+    l_pHere=here(tTool,world)
+    //保留旋转量
+    l_pHere.trsf.x=0
+    l_pHere.trsf.y=0
+    l_pHere.trsf.z=0
+    //保留力：x，y，z分量
+    l_trWorldOvrFrc.x=l_nWorldExtFrc[0]
+    l_trWorldOvrFrc.y=l_nWorldExtFrc[1]
+    l_trWorldOvrFrc.z=l_nWorldExtFrc[2]
+    //
+    trTCPExtFrc=l_pHere.trsf*l_trWorldOvrFrc
+    
+    //屏幕输出(实际)不需要
+    //
+    gotoxy(1,0)
+    put("机器人受到的外力：")
+    gotoxy(1,2)
+    put("World下的表示:")
+    gotoxy(1,3)
+    put("x:"+toString("8.3",trWorldExtFrc.x))
+    gotoxy(1,4)
+    put("y:"+toString("8.3",trWorldExtFrc.y))
+    gotoxy(1,5)
+    put("z:"+toString("8.3",trWorldExtFrc.z))
+    //TCP处
+    gotoxy(1,7)
+    put("TCP下的表示:")
+    gotoxy(1,8)
+    put("x:"+toString("8.3",trTCPExtFrc.x))
+    gotoxy(1,8)
+    put("y:"+toString("8.3",trTCPExtFrc.y))
+    gotoxy(1,8)
+    put("z:"+toString("8.3",trTCPExtFrc.z))
+    delay(0)
+  endWhile
+end]]></Code>
+  </Program>
+</Programs>

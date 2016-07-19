@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getPosFbk">
+    <Code><![CDATA[begin
+  cls()
+  //point
+  pFbk=$getPosFbk(tTool,world)
+  gotoxy(1,0)
+  put("当前笛卡尔反馈位置:")
+  gotoxy(1,1)
+  put("x:"+toString("8.3",pFbk.trsf.x))
+  gotoxy(1,2)
+  put("y:"+toString("8.3",pFbk.trsf.y))
+  gotoxy(1,3)
+  put("z:"+toString("8.3",pFbk.trsf.z))
+  gotoxy(20,1)
+  put("rx:"+toString("8.3",pFbk.trsf.rx))
+  gotoxy(20,2)
+  put("ry:"+toString("8.3",pFbk.trsf.ry))
+  gotoxy(20,3)
+  put("rz:"+toString("8.3",pFbk.trsf.rz))
+  //joint
+  jFbk=$getJntFbk()
+  gotoxy(1,5)
+  put("当前关节反馈位置:")
+  gotoxy(1,6)
+  put("j1:"+toString("8.3",jFbk.j1))
+  gotoxy(1,7)
+  put("j2:"+toString("8.3",jFbk.j2))
+  gotoxy(1,8)
+  put("j3:"+toString("8.3",jFbk.j3))
+  gotoxy(20,6)
+  put("j4:"+toString("8.3",jFbk.j4))
+  gotoxy(20,7)
+  put("j5:"+toString("8.3",jFbk.j5))
+  gotoxy(20,8)
+  put("j6:"+toString("8.3",jFbk.j6))
+end]]></Code>
+  </Program>
+</Programs>

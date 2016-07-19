@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="fileRead">
+    <Locals>
+      <Local name="l_bRes" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //file operation:open ,read, write,close
+  //
+  l_bRes=$fileExists(sFileRead)
+  if !l_bRes
+    popUpMsg("文件不存在："+sFileRead)
+    return
+  endIf
+  //防止某个文件没有关闭
+  $fileClose(0)
+  $fileClose(1)
+  $fileClose(2)
+  $fileClose(3)
+  $fileClose(4)
+  $fileClose(5)
+  $fileClose(6)
+  $fileClose(7)
+  $fileClose(8)
+  $fileClose(9)
+  //以读取（r）的方式打开文件
+  nFileHandler=$fileOpen(sFileRead,"r")
+  if nFileHandler<0 or nFileHandler>9
+    popUpMsg("打开文件失败："+sFileRead)
+    return
+  endIf
+  
+  do 
+      //每次读取一行,当然可以读取多行，sLine大小和读取行数最好一致。
+      nLine=$fileGet(nFileHandler,sLine,1)
+      //这里可以放置处理读取内容的代码
+      //
+      //
+      delay(0)
+    until nLine<=0
+    
+    
+    //达到文件末尾或其他跳出文件读取时，必须关闭文件
+    $fileClose(nFileHandler)
+    //
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="fileExit">
+    <Locals>
+      <Local name="l_bRes" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //
+  l_bRes=$fileExists(sFileExist)
+  if l_bRes
+    gotoxy(1,7)
+    put("文件存在:"+sFileExist)
+  else
+    gotoxy(1,7)
+    put("文件不存在:"+sFileExist)
+  endIf
+  
+end]]></Code>
+  </Program>
+</Programs>

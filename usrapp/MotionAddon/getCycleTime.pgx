@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getCycleTime">
+    <Code><![CDATA[begin
+  //
+  cls()
+  //
+  nCycleTime=$getCycleTime()
+  //
+  gotoxy(1,0)
+  put("当前系统周期(s)："+toString("4.3",nCycleTime))
+end]]></Code>
+  </Program>
+</Programs>
