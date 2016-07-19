@@ -34,7 +34,7 @@ nRadiusOut:圆的半径；
 * void $computeJntFrc(joint jPosition, num& nVelocity[], num& nAcceleration[], num& nForce[]):计算理论关节力。
 * void $externalForce(joint jPosition, tool tTool, num& nJointOverForce[], num&nCartForce[]):计算机器人受到的外部力，等效于TCP中心点。
 * num $getCycleTime():计算控制器的系统运行周期。
-* num $motionState():返回运动状态。它是以16bits表示的。
+* num $motionState():返回运动状态。它是以32bits表示的。
 
 
 ##Recorder
@@ -43,7 +43,7 @@ nRadiusOut:圆的半径；
 * recSize(string sRecorder,num bufferSize):设置sRecorder指定的缓存大小（bytes）。
 * recStart(string sRecorder,num  duration,num frequency):使用sRecorder指定的记录器开始记录数据，持续时间duration,采样频率frequency。
 * recStop(string sRecorder):停止记录。
-* recStore(string sRecorder,string path):把指定的记录器中数据保存在由“path”指定的文件（包含路径）。格式有ctt和txt。
+* recStore(string sRecorder,string path):把指定的记录器中数据保存在由“path”指定的文件（包含路径）。若保存成文本格式，使用“ctt”和“dtt”。
 
 
 ##Velocity
